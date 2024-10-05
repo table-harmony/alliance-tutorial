@@ -1,24 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace Utils {
     public interface IFileUploader {
-        Task<string> UploadFileAsync(HttpPostedFile file);
+        Task<string> UploadFileAsync(IFormFile file);
     }
-
-
-    /// <summary>
-    /// Provides functionality to upload files to a remote server.
-    /// </summary>
+    
     public class FileUploader : IFileUploader {
-        private static readonly HttpClient _httpClient = new HttpClient();
-        private const string API_URL = "https://colorless-shrimp-958.convex.site";
+        private readonly HttpClient _httpClient = new();
+        private readonly string API_URL = "https://colorless-shrimp-958.convex.site";
 
-        /// <summary>
-        /// Uploads a file to the remote server and returns the URL of the uploaded file.
-        /// </summary>
-        /// <param name="file">The file to be uploaded.</param>
-        /// <returns>The URL of the uploaded file.</returns>
-        public async Task<string> UploadFileAsync(HttpPostedFile file) {
+        // Uploads a file and returns a URL
+        public async Task<string> UploadFileAsync(IFormFile file) {
             string uploadUrl = await GenerateUploadUrlAsync();
             string storageId = await UploadToUrlAsync(uploadUrl, file);
             string fileUrl = await GetFileUrlAsync(storageId);
@@ -26,10 +20,7 @@ namespace Utils {
             return fileUrl;
         }
 
-        /// <summary>
-        /// Generates an upload URL from the remote server.
-        /// </summary>
-        /// <returns>The generated upload URL.</returns>
+        // Generating an upload url for a file
         private async Task<string> GenerateUploadUrlAsync() {
             var response = await _httpClient.PostAsync($"{API_URL}/generateUploadUrl", null);
             response.EnsureSuccessStatusCode();
@@ -39,31 +30,21 @@ namespace Utils {
             return result.uploadUrl;
         }
 
-        /// <summary>
-        /// Uploads a file to the specified URL.
-        /// </summary>
-        /// <param name="uploadUrl">The URL to upload the file to.</param>
-        /// <param name="file">The file to be uploaded.</param>
-        /// <returns>The storage ID of the uploaded file.</returns>
-        private async Task<string> UploadToUrlAsync(string uploadUrl, HttpPostedFile file) {
-            using (var content = new StreamContent(file.InputStream)) {
-                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+        // Uploading file to an upload url
+        private async Task<string> UploadToUrlAsync(string uploadUrl, IFormFile file) {
+            using var content = new StreamContent(file.OpenReadStream());
+            content.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
 
-                var response = await _httpClient.PostAsync(uploadUrl, content);
-                response.EnsureSuccessStatusCode();
+            var response = await _httpClient.PostAsync(uploadUrl, content);
+            response.EnsureSuccessStatusCode();
 
-                var responseContent = await response.Content.ReadAsStringAsync();
+            var responseContent = await response.Content.ReadAsStringAsync();
 
-                dynamic result = JsonConvert.DeserializeObject(responseContent);
-                return result.storageId;
-            }
+            dynamic result = JsonConvert.DeserializeObject(responseContent);
+            return result.storageId;
         }
 
-        /// <summary>
-        /// Retrieves the file URL for a given storage ID from the remote server.
-        /// </summary>
-        /// <param name="storageId">The storage ID of the file.</param>
-        /// <returns>The URL of the file.</returns>
+        // Get file url by storage id from convex
         private async Task<string> GetFileUrlAsync(string storageId) {
             var response = await _httpClient.GetAsync($"{API_URL}/getFileUrl?storageId={storageId}");
             var responseContent = await response.Content.ReadAsStringAsync();
@@ -74,7 +55,7 @@ namespace Utils {
             if (result?.fileUrl == null) {
                 throw new InvalidOperationException($"File URL not found in the response. Response: {responseContent}");
             }
-
+            
             return result.fileUrl;
         }
     }
