@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json;
 
 namespace Utils {
+    public interface IFileUploader {
+        Task<string> UploadFileAsync(HttpPostedFile file);
+    }
+
+
     /// <summary>
     /// Provides functionality to upload files to a remote server.
     /// </summary>
-    public static class FileUploader {
+    public class FileUploader : IFileUploader {
         private static readonly HttpClient _httpClient = new HttpClient();
         private const string API_URL = "https://colorless-shrimp-958.convex.site";
 
@@ -13,7 +18,7 @@ namespace Utils {
         /// </summary>
         /// <param name="file">The file to be uploaded.</param>
         /// <returns>The URL of the uploaded file.</returns>
-        public static async Task<string> UploadFileAsync(HttpPostedFile file) {
+        public async Task<string> UploadFileAsync(HttpPostedFile file) {
             string uploadUrl = await GenerateUploadUrlAsync();
             string storageId = await UploadToUrlAsync(uploadUrl, file);
             string fileUrl = await GetFileUrlAsync(storageId);
@@ -25,7 +30,7 @@ namespace Utils {
         /// Generates an upload URL from the remote server.
         /// </summary>
         /// <returns>The generated upload URL.</returns>
-        private static async Task<string> GenerateUploadUrlAsync() {
+        private async Task<string> GenerateUploadUrlAsync() {
             var response = await _httpClient.PostAsync($"{API_URL}/generateUploadUrl", null);
             response.EnsureSuccessStatusCode();
 
@@ -40,7 +45,7 @@ namespace Utils {
         /// <param name="uploadUrl">The URL to upload the file to.</param>
         /// <param name="file">The file to be uploaded.</param>
         /// <returns>The storage ID of the uploaded file.</returns>
-        private static async Task<string> UploadToUrlAsync(string uploadUrl, HttpPostedFile file) {
+        private async Task<string> UploadToUrlAsync(string uploadUrl, HttpPostedFile file) {
             using (var content = new StreamContent(file.InputStream)) {
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
 
@@ -59,7 +64,7 @@ namespace Utils {
         /// </summary>
         /// <param name="storageId">The storage ID of the file.</param>
         /// <returns>The URL of the file.</returns>
-        private static async Task<string> GetFileUrlAsync(string storageId) {
+        private async Task<string> GetFileUrlAsync(string storageId) {
             var response = await _httpClient.GetAsync($"{API_URL}/getFileUrl?storageId={storageId}");
             var responseContent = await response.Content.ReadAsStringAsync();
 

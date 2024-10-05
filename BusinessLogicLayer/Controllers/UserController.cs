@@ -3,13 +3,23 @@ using DataAccessLayer.Models;
 using Utils;
 
 namespace BusinessLogicLayer.Controllers {
-    public class UserController {
-        public static List<User> GetAllUsers() { return UserModel.GetAllUsers(); }
+    public interface IUserController {
+        List<User> GetAllUsers();
+        User? GetUserById(int id);
+        User? GetUserByEmail(string email);
+        User GetUserByCredentials(string email, string password);
+        void CreateUser(User user);
+        void UpdateUser(User user);
+        void DeleteUser(int id);
+    }
 
-        public static User? GetUserById(int id) { return UserModel.GetUserById(id); }
-        public static User? GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
+    public class UserController : IUserController {
+        public List<User> GetAllUsers() { return UserModel.GetAllUsers(); }
 
-        public static User GetUserByCredentials(string email, string password) {
+        public User? GetUserById(int id) { return UserModel.GetUserById(id); }
+        public User? GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
+
+        public User GetUserByCredentials(string email, string password) {
             User? user = GetUserByEmail(email);
 
             if (user == null)
@@ -23,7 +33,7 @@ namespace BusinessLogicLayer.Controllers {
             return user;
         }
 
-        public static void CreateUser(User user) {
+        public void CreateUser(User user) {
             User? existingUser = GetUserByEmail(user.Email);
 
             if (existingUser != null)
@@ -34,7 +44,7 @@ namespace BusinessLogicLayer.Controllers {
             UserModel.CreateUser(user);
         }
 
-        public static void UpdateUser(User user) {
+        public void UpdateUser(User user) {
 
             if (!string.IsNullOrEmpty(user.Password))
                 user.Password = Sha256Encryption.Encrypt(user.Password);
@@ -49,6 +59,6 @@ namespace BusinessLogicLayer.Controllers {
             UserModel.UpdateUser(user);
         }
 
-        public static void DeleteUser(int id) { UserModel.DeleteUser(id); }
+        public void DeleteUser(int id) { UserModel.DeleteUser(id); }
     }
 }
