@@ -1,9 +1,9 @@
 ﻿using DataAccessLayer.Entities;
-using DataAccessLayer.Models;
+using DataAccessLayer.Repositories;
 using Utils;
 
-namespace BusinessLogicLayer.Controllers {
-    public interface IUserController {
+namespace BusinessLogicLayer.Services {
+    public interface IUserService {
         List<User> GetAllUsers();
         User? GetUserById(int id);
         User? GetUserByEmail(string email);
@@ -13,11 +13,14 @@ namespace BusinessLogicLayer.Controllers {
         void DeleteUser(int id);
     }
 
-    public class UserController : IUserController {
-        public List<User> GetAllUsers() { return UserModel.GetAllUsers(); }
+    public class UserService(IUserRepository repository, IEncryption encryption) : IUserService {
+        private readonly IUserRepository _repository = repository;
+        private readonly IEncryption _encryption = encryption;
 
-        public User? GetUserById(int id) { return UserModel.GetUserById(id); }
-        public User? GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
+        public List<User> GetAllUsers() { return _repository.GetAllUsers(); }
+
+        public User? GetUserById(int id) { return _repository.GetUserById(id); }
+        public User? GetUserByEmail(string email) { return _repository.GetUserByEmail(email); }
 
         public User GetUserByCredentials(string email, string password) {
             User? user = GetUserByEmail(email);
@@ -25,7 +28,7 @@ namespace BusinessLogicLayer.Controllers {
             if (user == null)
                 throw new NotFoundException("User does not exist");
 
-            bool passwordsMatch = Sha256Encryption.Compare(password, user.Password);
+            bool passwordsMatch = _encryption.Compare(password, user.Password);
 
             if (!passwordsMatch)
                 throw new PublicException("Passwords do not match");
@@ -39,15 +42,15 @@ namespace BusinessLogicLayer.Controllers {
             if (existingUser != null)
                 throw new PublicException("User already exists");
 
-            user.Password = Sha256Encryption.Encrypt(user.Password);
+            user.Password = _encryption.Encrypt(user.Password);
 
-            UserModel.CreateUser(user);
+            _repository.CreateUser(user);
         }
 
         public void UpdateUser(User user) {
 
             if (!string.IsNullOrEmpty(user.Password))
-                user.Password = Sha256Encryption.Encrypt(user.Password);
+                user.Password = _encryption.Encrypt(user.Password);
 
             if (!string.IsNullOrEmpty(user.Email)) {
                 User? existingUser = GetUserByEmail(user.Email);
@@ -56,9 +59,9 @@ namespace BusinessLogicLayer.Controllers {
                     throw new PublicException("Email taken");
             }
 
-            UserModel.UpdateUser(user);
+            _repository.UpdateUser(user);
         }
 
-        public void DeleteUser(int id) { UserModel.DeleteUser(id); }
+        public void DeleteUser(int id) { _repository.DeleteUser(id); }
     }
 }

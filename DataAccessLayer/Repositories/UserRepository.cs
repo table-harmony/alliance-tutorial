@@ -3,9 +3,9 @@ using DataAccessLayer.Entities;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DataAccessLayer.Models {
+namespace DataAccessLayer.Repositories {
 
-    public interface IUserModel {
+    public interface IUserRepository {
         List<User> GetAllUsers();
         User? GetUserById(int id);
         User? GetUserByEmail(string email);
@@ -14,7 +14,8 @@ namespace DataAccessLayer.Models {
         void DeleteUser(int id);
     }
 
-    public class UserModel : IUserModel {
+    public class UserRepository(DatabaseContext databaseContext) : IUserRepository {
+        private readonly DatabaseContext _databaseContext = databaseContext;
 
         /// <summary>
         /// Converts a DataRow into a User object
@@ -38,7 +39,7 @@ namespace DataAccessLayer.Models {
 
         public List<User> GetAllUsers() {
             string query = "SELECT * FROM Users";
-            DataSet data = DatabaseContext.ExecuteQuery(query);
+            DataSet data = _databaseContext.ExecuteQuery(query);
 
             return data.Tables[0].Rows.Cast<DataRow>()
                 .Select(row => MapToUser(row)!)
@@ -49,7 +50,7 @@ namespace DataAccessLayer.Models {
             string query = "SELECT * FROM Users WHERE Id = @Id";
             var parameters = new[] { new SqlParameter("@Id", id) };
 
-            DataSet data = DatabaseContext.ExecuteQuery(query, parameters);
+            DataSet data = _databaseContext.ExecuteQuery(query, parameters);
 
             return data.Tables[0].Rows.Cast<DataRow>()
                 .Select(MapToUser)
@@ -60,7 +61,7 @@ namespace DataAccessLayer.Models {
             string query = "SELECT * FROM Users WHERE Email = @Email";
             var parameters = new[] { new SqlParameter("@Email", email) };
 
-            DataSet data = DatabaseContext.ExecuteQuery(query, parameters);
+            DataSet data = _databaseContext.ExecuteQuery(query, parameters);
 
             return data.Tables[0].Rows.Cast<DataRow>()
                 .Select(MapToUser)
@@ -79,7 +80,7 @@ namespace DataAccessLayer.Models {
                 new SqlParameter("@Role", user.Role),
             };
 
-            DataSet data = DatabaseContext.ExecuteQuery(query, parameters);
+            DataSet data = _databaseContext.ExecuteQuery(query, parameters);
 
             user.Id = Convert.ToInt32(data.Tables[0].Rows[0]["Id"]);
         }
@@ -96,14 +97,14 @@ namespace DataAccessLayer.Models {
                 new SqlParameter("@Role", (int)user.Role),
             };
 
-            DatabaseContext.ExecuteQuery(query, parameters);
+            _databaseContext.ExecuteQuery(query, parameters);
         }
 
         public void DeleteUser(int id) {
             string query = "DELETE FROM Users WHERE Id = @Id";
             var parameters = new[] { new SqlParameter("@Id", id) };
 
-            DatabaseContext.ExecuteQuery(query, parameters);
+            _databaseContext.ExecuteQuery(query, parameters);
         }
     }
 }

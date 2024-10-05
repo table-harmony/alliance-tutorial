@@ -6,47 +6,36 @@ namespace DataAccessLayer.Data {
     /// <summary>
     /// Provides helper methods for ADO.NET database operations.
     /// </summary>
-    public class DatabaseContext {
-        /// <summary>
-        /// Establishes a connection to the database.
-        /// </summary>
-        /// <returns>An open SqlConnection to the database.</returns>
-        private static SqlConnection GetConnection() {
-            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-            SqlConnection conn = new(connectionString);
-            return conn;
-        }
+    public class DatabaseContext(string connectionString) {
+        private readonly string _connectionString = connectionString;
 
         /// <summary>
-        /// Executes a SQL query and returns the results as a DataSet.
+        /// Executes a SQL query and retrieves the result set as a <see cref="DataSet"/>.
+        /// Supports both parameterized queries and stored procedures.
         /// </summary>
-        /// <param name="query">The SQL query to execute.</param>
-        /// <param name="parameters">Optional array of SqlParameters to use with the query.</param>
-        /// <param name="isStoredProcedure">A boolean stating if the query is a stored procedure</param>
-        /// <returns>A DataSet containing the query results.</returns>
-        public static DataSet ExecuteQuery(string query,
-                                            SqlParameter[] parameters = null,
-                                            bool isStoredProcedure = false) {
-            using (var connection = GetConnection()) {
-                connection.Open();
+        /// <param name="query">The SQL query or stored procedure name to execute.</param>
+        /// <param name="parameters">Optional array of <see cref="SqlParameter"/> objects for parameterized queries.</param>
+        /// <param name="isStoredProcedure">Specifies whether the query is a stored procedure.</param>
+        /// <returns>A <see cref="DataSet"/> containing the results of the query execution.</returns>
 
-                using (var command = new SqlCommand(query, connection)) {
-                    if (isStoredProcedure) 
-                        command.CommandType = CommandType.StoredProcedure;
+        public DataSet ExecuteQuery(string query, SqlParameter[] parameters = null, bool isStoredProcedure = false) {
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
 
-                    if (parameters != null) {
-                        command.Parameters.AddRange(parameters);
-                    }
+            using SqlCommand command = new(query, connection);
 
-                    var dataSet = new DataSet();
-                    using (var adapter = new SqlDataAdapter(command)) {
-                        adapter.Fill(dataSet);
-                    }
+            if (isStoredProcedure)
+                command.CommandType = CommandType.StoredProcedure;
 
-                    return dataSet;
-                }
-            }
+            if (parameters != null)
+                command.Parameters.AddRange(parameters);
+
+            using SqlDataAdapter adapter = new(command);
+            DataSet dataSet = new();
+            adapter.Fill(dataSet);
+
+            return dataSet;
         }
+
     }
 }
