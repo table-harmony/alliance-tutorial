@@ -2,12 +2,11 @@
 using DataAccessLayer.Models;
 using Utils;
 
-namespace BusinsessLogicLayer.Controllers {
+namespace BusinessLogicLayer.Controllers {
     public class UserController {
-
         public static List<User> GetAllUsers() { return UserModel.GetAllUsers(); }
 
-        public static User? GetUserById(int id) {  return UserModel.GetUserById(id); }
+        public static User? GetUserById(int id) { return UserModel.GetUserById(id); }
         public static User? GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
 
         public static User GetUserByCredentials(string email, string password) {
@@ -32,9 +31,9 @@ namespace BusinsessLogicLayer.Controllers {
 
             user.Password = Sha256Encryption.Encrypt(user.Password);
 
-            UserModel.CreateUser(user); 
+            UserModel.CreateUser(user);
         }
-    
+
         public static void UpdateUser(User user) {
 
             if (!string.IsNullOrEmpty(user.Password))
@@ -51,6 +50,5 @@ namespace BusinsessLogicLayer.Controllers {
         }
 
         public static void DeleteUser(int id) { UserModel.DeleteUser(id); }
-
     }
 }

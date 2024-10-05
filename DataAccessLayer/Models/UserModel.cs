@@ -21,8 +21,8 @@ namespace DataAccessLayer.Models {
 
             return new User {
                 Id = id,
-                Email = row["Email"] as string ?? string.Empty,
-                Password = row["Password"] as string ?? string.Empty,
+                Email = row["Email"].ToString() ?? "",
+                Password = row["Password"].ToString() ?? "",
                 Role = Enum.TryParse<UserRoleEnum>(row["Role"]?.ToString(), out var role) ? role : UserRoleEnum.Member
             };
         }
@@ -76,11 +76,6 @@ namespace DataAccessLayer.Models {
         }
 
         public static void UpdateUser(User user) {
-            User? existingUser = GetUserById(user.Id);
-
-            if (existingUser == null)
-                return;
-
             string query = @"UPDATE Users 
                 SET Email = @Email, Password = @Password, Role = @Role
                 WHERE Id = @Id";
