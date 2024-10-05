@@ -18,7 +18,7 @@ namespace DataAccessLayer.Data {
         /// <param name="isStoredProcedure">Specifies whether the query is a stored procedure.</param>
         /// <returns>A <see cref="DataSet"/> containing the results of the query execution.</returns>
 
-        public DataSet ExecuteQuery(string query, SqlParameter[] parameters = null, bool isStoredProcedure = false) {
+        public DataSet ExecuteQuery(string query, SqlParameter[]? parameters = null, bool isStoredProcedure = false) {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
 
