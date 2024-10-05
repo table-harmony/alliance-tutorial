@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using DataAccessLayer.Entities;
+﻿using DataAccessLayer.Entities;
 using DataAccessLayer.Models;
+using Utils;
 
 namespace BusinsessLogicLayer.Controllers {
     public class UserController {
 
         public static List<User> GetAllUsers() { return UserModel.GetAllUsers(); }
 
-        public static User GetUserById(int id) {  return UserModel.GetUserById(id); }
-        public static User GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
+        public static User? GetUserById(int id) {  return UserModel.GetUserById(id); }
+        public static User? GetUserByEmail(string email) { return UserModel.GetUserByEmail(email); }
 
         public static User GetUserByCredentials(string email, string password) {
-            User user = GetUserByEmail(email);
+            User? user = GetUserByEmail(email);
 
             if (user == null)
                 throw new NotFoundException("User does not exist");
@@ -25,7 +25,7 @@ namespace BusinsessLogicLayer.Controllers {
         }
 
         public static void CreateUser(User user) {
-            User existingUser = GetUserByEmail(user.Email);
+            User? existingUser = GetUserByEmail(user.Email);
 
             if (existingUser != null)
                 throw new PublicException("User already exists");
@@ -41,7 +41,7 @@ namespace BusinsessLogicLayer.Controllers {
                 user.Password = Sha256Encryption.Encrypt(user.Password);
 
             if (!string.IsNullOrEmpty(user.Email)) {
-                User existingUser = GetUserByEmail(user.Email);
+                User? existingUser = GetUserByEmail(user.Email);
 
                 if (existingUser != null && existingUser.Id != user.Id)
                     throw new PublicException("Email taken");
