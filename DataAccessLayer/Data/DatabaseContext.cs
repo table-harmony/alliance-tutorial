@@ -17,7 +17,6 @@ namespace DataAccessLayer.Data {
         /// <param name="parameters">Optional array of <see cref="SqlParameter"/> objects for parameterized queries.</param>
         /// <param name="isStoredProcedure">Specifies whether the query is a stored procedure.</param>
         /// <returns>A <see cref="DataSet"/> containing the results of the query execution.</returns>
-
         public DataSet ExecuteQuery(string query, SqlParameter[]? parameters = null, bool isStoredProcedure = false) {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -36,6 +35,5 @@ namespace DataAccessLayer.Data {
 
             return dataSet;
         }
-
     }
 }

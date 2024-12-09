@@ -40,9 +40,9 @@ namespace DataAccessLayer.Repositories {
         public List<User> GetAllUsers() {
             string query = "SELECT * FROM Users";
             DataSet data = _databaseContext.ExecuteQuery(query);
-
+            
             return data.Tables[0].Rows.Cast<DataRow>()
-                .Select(row => MapToUser(row)!)
+                .Select(row => MapToUser(row)!) 
                 .ToList();
         }
 
@@ -86,7 +86,7 @@ namespace DataAccessLayer.Repositories {
         }
 
         public void UpdateUser(User user) {
-            string query = @"UPDATE Users 
+            string query = @"UPDATE Users
                 SET Email = @Email, Password = @Password, Role = @Role
                 WHERE Id = @Id";
 

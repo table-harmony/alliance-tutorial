@@ -2,6 +2,9 @@ using DataAccessLayer.Data;
 using DataAccessLayer.Repositories;
 using BusinessLogicLayer.Services;
 using Utils;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using PresentationLayer.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,11 @@ builder.Services.AddControllersWithViews();
 //Register db contect
 builder.Services.AddScoped(provider =>
     new DatabaseContext(builder.Configuration.GetConnectionString("DefaultConnection")!));
+
+builder.Services.AddDbContext<PresentationLayerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")!));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<PresentationLayerContext>();
 
 
 // Register services
