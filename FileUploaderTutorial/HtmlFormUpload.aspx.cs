@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace FileUploaderTutorial {
     public partial class HtmlFormUpload : System.Web.UI.Page {
-        protected readonly FileUploader fileUploader = new FileUploader();
+        protected readonly IFileUploader fileUploader = new FileUploader();
 
         protected void Page_Load(object sender, EventArgs e) {
             if (Request["submit"] != null) {

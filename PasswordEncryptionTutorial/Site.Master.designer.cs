@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventTrackerTutorial {
+namespace PasswordEncryptionTutorial {
 
 
     public partial class Site {

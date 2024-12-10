@@ -7,36 +7,21 @@ using System.Threading.Tasks;
 
 namespace FileUploaderTutorial.Utils {
     /// <summary>
-    /// קובץ
-    /// </summary>
-    public class File {
-        public Stream Stream { get; set; }
-        public string ContentType { get; set; }
-    }
-
-    /// <summary>
-    /// ממשק להעלאת קבצים במקרה ויש מספר מימושים להעלאת קובץ כגון בתיקייה לוקלית
-    /// </summary>
-    public interface IFileUploader {
-        Task<string> UploadFileAsync(File file);
-    }
-
-    /// <summary>
-    /// העלאת קובץ של לירון לאחסון convex
+    /// מחלקה המממשת העלאת קבצים לשירות Convex
     /// </summary>
     public class FileUploader : IFileUploader {
-        private readonly HttpClient _httpClient;
-        private readonly string API_URL = "https://colorless-shrimp-958.convex.site";
+        private readonly HttpClient _httpClient;  // לקוח HTTP לביצוע בקשות לשרת
+        private readonly string API_URL;  //  כתובת ה-API של השירות
 
         public FileUploader() {
             _httpClient = new HttpClient();
         }
 
         /// <summary>
-        /// הפעולה מקבלת מופע מן המחלקה קובץ ומחזירה קישור לקובץ
+        /// מעלה קובץ לשרת ומחזיר את כתובת הגישה אליו
         /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
+        /// <param name="file">הקובץ להעלאה</param>
+        /// <returns>כתובת URL לגישה לקובץ</returns>
         public async Task<string> UploadFileAsync(File file) {
             string uploadUrl = await GenerateUploadUrlAsync();
             string storageId = await UploadToUrlAsync(uploadUrl, file);
@@ -46,9 +31,9 @@ namespace FileUploaderTutorial.Utils {
         }
 
         /// <summary>
-        /// הפעולה מייצרת קישור להעלאה
+        /// מייצר כתובת URL זמנית להעלאת הקובץ
         /// </summary>
-        /// <returns>קישור העלאה</returns>
+        /// <returns>כתובת URL להעלאה</returns>
         private async Task<string> GenerateUploadUrlAsync() {
             var response = await _httpClient.PostAsync($"{API_URL}/generateUploadUrl", null);
             response.EnsureSuccessStatusCode();
@@ -59,13 +44,12 @@ namespace FileUploaderTutorial.Utils {
             return result.uploadUrl;
         }
 
-
         /// <summary>
-        /// הפעולה מעלה קובץ לקישור
+        /// מעלה את הקובץ לכתובת שנוצרה
         /// </summary>
-        /// <param name="uploadUrl">קישור</param>
-        /// <param name="file">קובץ</param>
-        /// <returns>הפעולה מחזירה את הכתובת של הקובץ באחסון</returns>
+        /// <param name="uploadUrl">כתובת ההעלאה</param>
+        /// <param name="file">הקובץ להעלאה</param>
+        /// <returns>מזהה הקובץ במערכת האחסון</returns>
         private async Task<string> UploadToUrlAsync(string uploadUrl, File file) {
             using (var content = new StreamContent(file.Stream)) {
                 content.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
@@ -81,11 +65,10 @@ namespace FileUploaderTutorial.Utils {
         }
 
         /// <summary>
-        /// הפעולה מקבלת כתובת אחסון ומחזירה קישור הקובץ
+        /// מקבל את כתובת הגישה הסופית לקובץ
         /// </summary>
-        /// <param name="storageId">כתובת אחסון</param>
-        /// <returns>קישור הקובץ</returns>
-        /// <exception cref="InvalidOperationException"></exception>
+        /// <param name="storageId">מזהה הקובץ במערכת האחסון</param>
+        /// <returns>כתובת URL סופית לגישה לקובץ</returns>
         private async Task<string> GetFileUrlAsync(string storageId) {
             var response = await _httpClient.GetAsync($"{API_URL}/getFileUrl?storageId={storageId}");
             response.EnsureSuccessStatusCode();
