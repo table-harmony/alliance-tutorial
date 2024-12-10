@@ -15,9 +15,6 @@
 						<div class="mb-4">
 							<label for="fileUpload" class="form-label">Choose a file to upload</label>
 							<input type="file" name="fileUpload" id="fileUpload" class="form-control" required />
-							<div class="invalid-feedback">
-								Please select a file to upload
-							</div>
 						</div>
 						<div class="mb-4">
 							<button type="submit" name="submit" class="btn btn-primary">Upload File</button>
