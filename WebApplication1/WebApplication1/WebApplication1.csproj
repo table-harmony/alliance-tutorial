@@ -72,9 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllEvents.aspx" />
+    <Content Include="PasswordEncryption.aspx" />
     <Content Include="TrackEvent.aspx" />
     <Content Include="UploadFile.aspx" />
     <Content Include="UploadFile2.aspx" />
+    <Content Include="VerifyPassword.aspx" />
+    <Content Include="VerifyPassword2.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +87,13 @@
     </Compile>
     <Compile Include="AllEvents.aspx.designer.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordEncryption.aspx.cs">
+      <DependentUpon>PasswordEncryption.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PasswordEncryption.aspx.designer.cs">
+      <DependentUpon>PasswordEncryption.aspx</DependentUpon>
     </Compile>
     <Compile Include="TrackEvent.aspx.cs">
       <DependentUpon>TrackEvent.aspx</DependentUpon>
@@ -108,6 +118,22 @@
     </Compile>
     <Compile Include="UploadFile2.aspx.designer.cs">
       <DependentUpon>UploadFile2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Encryption.cs" />
+    <Compile Include="Utils\Steganography.cs" />
+    <Compile Include="VerifyPassword.aspx.cs">
+      <DependentUpon>VerifyPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerifyPassword.aspx.designer.cs">
+      <DependentUpon>VerifyPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerifyPassword2.aspx.cs">
+      <DependentUpon>VerifyPassword2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerifyPassword2.aspx.designer.cs">
+      <DependentUpon>VerifyPassword2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
