@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "Presen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1\WebApplication1.csproj", "{4DE2EC34-EBFA-4D28-8EBD-92B7AFDAEDCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploaderTutorial", "FileUploaderTutorial\FileUploaderTutorial.csproj", "{8F9D1C5C-A50D-4743-BBE9-BB778AFC44D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4DE2EC34-EBFA-4D28-8EBD-92B7AFDAEDCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE2EC34-EBFA-4D28-8EBD-92B7AFDAEDCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DE2EC34-EBFA-4D28-8EBD-92B7AFDAEDCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F9D1C5C-A50D-4743-BBE9-BB778AFC44D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F9D1C5C-A50D-4743-BBE9-BB778AFC44D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F9D1C5C-A50D-4743-BBE9-BB778AFC44D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F9D1C5C-A50D-4743-BBE9-BB778AFC44D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
