@@ -9,12 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTrackerTutorial", "Eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordEncryptionTutorial", "PasswordEncryptionTutorial\PasswordEncryptionTutorial.csproj", "{67E4B31E-26B8-4834-9B3A-E892D93C9BAA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Mangement Tutorial", "User Mangement Tutorial", "{A95082ED-DC9D-4B7A-9E89-6C41895496D6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entity Framework Tutorial", "Entity Framework Tutorial", "{D07DBD2C-FEBA-4A9F-BF26-F1F1668BE03C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET Core Tutorial", "ASP.NET Core Tutorial", "{D73AD56F-970A-40C2-AC3A-231542D2A036}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketsTutorial", "WebSocketsTutorial\WebSocketsTutorial.csproj", "{510F8C64-F4F5-4649-AD20-FB5CFC3C8FD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteganographyTutorial", "SteganographyTutorial\SteganographyTutorial.csproj", "{B9903B62-4A84-4E43-B28E-6CBEA7678F52}"
@@ -22,6 +16,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendersTutorial", "SendersTutorial\SendersTutorial.csproj", "{93D01529-039E-464C-88DE-2357FA47ED26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AITutorial", "AITutorial\AITutorial.csproj", "{982A7611-1AAF-49F7-BC77-2DBF530F07EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementTutorial", "UserManagementTutorial\UserManagementTutorial.csproj", "{4A295C7D-6633-474F-A6D0-AA7857A4A915}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5CFA0780-D48F-46C3-926E-9DA39F22AA7B}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{982A7611-1AAF-49F7-BC77-2DBF530F07EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982A7611-1AAF-49F7-BC77-2DBF530F07EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982A7611-1AAF-49F7-BC77-2DBF530F07EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A295C7D-6633-474F-A6D0-AA7857A4A915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A295C7D-6633-474F-A6D0-AA7857A4A915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A295C7D-6633-474F-A6D0-AA7857A4A915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A295C7D-6633-474F-A6D0-AA7857A4A915}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Web;
+using MimeTypes;
 
 namespace FileUploaderTutorial.Utils {
     /// <summary>
@@ -35,7 +37,7 @@ namespace FileUploaderTutorial.Utils {
                     await file.Stream.CopyToAsync(fileStream);
                 }
 
-                return $"{_uploadDirectory}/{fileName}";
+                return filePath;
             } catch (Exception ex) {
                 throw new InvalidOperationException($"Failed to upload file: {ex.Message}", ex);
             }
@@ -48,24 +50,7 @@ namespace FileUploaderTutorial.Utils {
         /// <returns>סיומת הקובץ</returns>
         /// <exception cref="InvalidOperationException">כאשר טיפוס הקובץ לא נתמך</exception>
         private static string GetExtension(string contentType) {
-            var mimeTypes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
-                { "image/jpeg", ".jpg" },
-                { "image/png", ".png" },
-                { "image/gif", ".gif" },
-                { "application/pdf", ".pdf" },
-                { "text/plain", ".txt" },
-                { "application/zip", ".zip" },
-                { "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ".docx" },
-                { "application/vnd.ms-excel", ".xls" },
-                { "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".xlsx" }
-            };
-
-            if (mimeTypes.TryGetValue(contentType, out var extension)) {
-                return extension;
-            }
-
-            throw new InvalidOperationException($"Unsupported content type: {contentType}");
+            return MimeTypeMap.GetExtension(contentType);
         }
-
     }
 }

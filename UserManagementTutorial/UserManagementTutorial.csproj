@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B9903B62-4A84-4E43-B28E-6CBEA7678F52}</ProjectGuid>
+    <ProjectGuid>{4A295C7D-6633-474F-A6D0-AA7857A4A915}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SteganographyTutorial</RootNamespace>
-    <AssemblyName>SteganographyTutorial</AssemblyName>
+    <RootNamespace>UserManagementTutorial</RootNamespace>
+    <AssemblyName>UserManagementTutorial</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44364</IISExpressSSLPort>
+    <IISExpressSSLPort>44362</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -44,9 +44,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MimeTypes, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MimeTypeMapOfficial.1.0.17\lib\net452\MimeTypes.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -70,57 +67,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DecodeImage.aspx" />
-    <Content Include="Documentation.aspx" />
-    <Content Include="EncodeImage.aspx" />
-    <Content Include="Home.aspx" />
+    <Content Include="App_Data\Main.mdf" />
+    <Content Include="App_Data\Main_log.ldf">
+      <DependentUpon>Main.mdf</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DecodeImage.aspx.cs">
-      <DependentUpon>DecodeImage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DecodeImage.aspx.designer.cs">
-      <DependentUpon>DecodeImage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Documentation.aspx.cs">
-      <DependentUpon>Documentation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Documentation.aspx.designer.cs">
-      <DependentUpon>Documentation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EncodeImage.aspx.cs">
-      <DependentUpon>EncodeImage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EncodeImage.aspx.designer.cs">
-      <DependentUpon>EncodeImage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="Dal\DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\IFileUploader.cs" />
-    <Compile Include="Utils\LocalFileUploader.cs" />
-    <Compile Include="Utils\Steganography.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Site.Master" />
-    <Content Include="README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -129,7 +87,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Uploads\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Model\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -144,9 +104,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58790</DevelopmentServerPort>
+          <DevelopmentServerPort>56689</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44364/</IISUrl>
+          <IISUrl>https://localhost:44362/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
