@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Threading.Tasks;
 
-namespace SendersTutorial.Utils.Database {
+namespace UserManagementTutorial.Dal {
 
     /// <summary>
     /// Represents a database command with its SQL text, parameters, and command type.
@@ -26,7 +26,9 @@ namespace SendersTutorial.Utils.Database {
         private readonly string _connectionString;
 
         public DatabaseContext() {
-            _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            _connectionString = ConfigurationManager
+                .ConnectionStrings["DefaultConnection"]
+                .ConnectionString;
         }
 
         /// <summary>
