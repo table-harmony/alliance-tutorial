@@ -9,12 +9,14 @@ namespace FileUploaderTutorial.Utils {
     /// <summary>
     /// מחלקה המממשת העלאת קבצים לשירות Convex
     /// </summary>
-    public class FileUploader : IFileUploader {
+    public class CloadFileUploader : IFileUploader {
         private readonly HttpClient _httpClient;  // לקוח HTTP לביצוע בקשות לשרת
-        private readonly string API_URL;  //  כתובת ה-API של השירות
+        private readonly string API_URL = "https://colorless-shrimp-958.convex.site";  //  כתובת ה-API של השירות
 
-        public FileUploader() {
-            _httpClient = new HttpClient();
+        public CloadFileUploader() {
+            _httpClient = new HttpClient() {
+                BaseAddress = new Uri(API_URL)
+            };
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace FileUploaderTutorial.Utils {
         /// </summary>
         /// <returns>כתובת URL להעלאה</returns>
         private async Task<string> GenerateUploadUrlAsync() {
-            var response = await _httpClient.PostAsync($"{API_URL}/generateUploadUrl", null);
+            var response = await _httpClient.PostAsync($"generateUploadUrl", null);
             response.EnsureSuccessStatusCode();
 
             var content = await response.Content.ReadAsStringAsync();
@@ -70,7 +72,7 @@ namespace FileUploaderTutorial.Utils {
         /// <param name="storageId">מזהה הקובץ במערכת האחסון</param>
         /// <returns>כתובת URL סופית לגישה לקובץ</returns>
         private async Task<string> GetFileUrlAsync(string storageId) {
-            var response = await _httpClient.GetAsync($"{API_URL}/getFileUrl?storageId={storageId}");
+            var response = await _httpClient.GetAsync($"getFileUrl?storageId={storageId}");
             response.EnsureSuccessStatusCode();
 
             var responseContent = await response.Content.ReadAsStringAsync();

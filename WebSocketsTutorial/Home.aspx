@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="SteganographyTutorial.Home" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="WebSocketsTutorial.Home" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,45 +6,45 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="main" runat="server">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="display-4">Steganography Tutorial</h1>
-            <p class="lead">Learn how to hide and extract secret messages within image files using steganography techniques.</p>
+            <h1 class="display-4">WebSockets Tutorial</h1>
+            <p class="lead">This project demonstrates different approaches to real-time communication in ASP.NET Web Forms.</p>
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title mt-2"><i class="bi bi-shield-lock"></i> Tutorial Features</h5>
+                    <h5 class="card-title">Features</h5>
                     <ul>
-                        <li>Hide text messages within image files</li>
-                        <li>Extract hidden messages from encoded images</li>
-                        <li>Non-destructive LSB encoding</li>
-                        <li>Support for various image formats</li>
-                        <li>Secure message embedding</li>
+                        <li>Native WebSocket Implementation</li>
+                        <li>SignalR Integration</li>
+                        <li>Real-time Message Broadcasting</li>
+                        <li>Connection Management</li>
                     </ul>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="bi bi-file-earmark-lock2"></i> Encode Image
+                                <i class="bi bi-chat-dots"></i> Custom Chat
                             </h5>
-                            <p class="card-text">Hide your secret message within an image file using LSB steganography.</p>
-                            <a href="EncodeImage.aspx" class="btn btn-primary">
-                                <i class="bi bi-pencil-square"></i> Encode Message
+                            <p class="card-text">Basic chat implementation using native WebSocket protocol.</p>
+                            <a href="CustomChat.aspx" class="btn btn-primary">
+                                <i class="bi bi-chat"></i> Try Custom Chat
                             </a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <i class="bi bi-file-earmark-text"></i> Decode Image
+                                <i class="bi bi-chat-square-dots"></i> SignalR Chat
                             </h5>
-                            <p class="card-text">Extract hidden messages from previously encoded image files.</p>
-                            <a href="DecodeImage.aspx" class="btn btn-primary">
-                                <i class="bi bi-eye"></i> Decode Message
+                            <p class="card-text">Advanced chat implementation using SignalR for real-time communication.</p>
+                            <a href="SignalRChat.aspx" class="btn btn-primary">
+                                <i class="bi bi-chat-square"></i> Try SignalR Chat
                             </a>
                         </div>
                     </div>

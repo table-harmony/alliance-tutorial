@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace FileUploaderTutorial {
     public partial class AspNetUpload : System.Web.UI.Page {
-        protected readonly IFileUploader fileUploader = new FileUploader();
+        protected readonly IFileUploader fileUploader = new CloadFileUploader();
 
         protected void Page_Load(object sender, EventArgs e) {
 

@@ -11,7 +11,7 @@
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-file-earmark"></i>Tutorial Features</h5>
+                    <h5 class="card-title">Tutorial Features</h5>
                     <ul>
                         <li>ASP.NET FileUpload Control Implementation</li>
                         <li>HTML Form-based File Upload</li>
