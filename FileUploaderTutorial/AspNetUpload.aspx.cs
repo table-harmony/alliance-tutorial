@@ -31,7 +31,6 @@ namespace FileUploaderTutorial {
                 StatusLabel.Text = "File uploaded successfully! " + fileUrl;
             } catch (Exception ex) {
                 StatusLabel.Text = "Upload failed: " + ex.Message;
-                throw;
             }
         }
     }
