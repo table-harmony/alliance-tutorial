@@ -21,23 +21,37 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Track Events</h5>
+                            <h5 class="card-title"><i class="bi bi-activity"></i> Track Events</h5>
                             <p class="card-text">Create and track custom events in your application.</p>
-                            <a href="TrackEvent.aspx" class="btn btn-primary">Track New Event</a>
+                            <a href="TrackEvent.aspx" class="btn btn-primary"><i class="bi bi-activity"></i> Track New Event</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">View Events</h5>
+                            <h5 class="card-title"><i class="bi bi-graph-up-arrow"></i> View Events</h5>
                             <p class="card-text">View and analyze all tracked events in your system.</p>
-                            <a href="AllEvents.aspx" class="btn btn-primary">View All Events</a>
+                            <a href="AllEvents.aspx" class="btn btn-primary"><i class="bi bi-graph-up-arrow"></i> View Events</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-archive"></i> Documentation
+                        </h5>
+                        <p class="card-text">Documentation explaining event tracking</p>
+                        <a href="Documentation.aspx" class="btn btn-primary">
+                            <i class="bi bi-archive"></i> Documentation
+                        </a>
                     </div>
                 </div>
             </div>

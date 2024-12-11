@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllEvents.aspx" />
+    <Content Include="Documentation.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="TrackEvent.aspx" />
     <Content Include="Web.config" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="AllEvents.aspx.designer.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Documentation.aspx.cs">
+      <DependentUpon>Documentation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Documentation.aspx.designer.cs">
+      <DependentUpon>Documentation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

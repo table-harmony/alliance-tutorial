@@ -11,7 +11,7 @@
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title mt-2">Tutorial Features</h5>
+                    <h5 class="card-title mt-2"><i class="bi bi-shield-lock"></i> Tutorial Features</h5>
                     <ul>
                         <li>Hide text messages within image files</li>
                         <li>Extract hidden messages from encoded images</li>

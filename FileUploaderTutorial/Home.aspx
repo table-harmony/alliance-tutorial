@@ -11,7 +11,7 @@
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Tutorial Features</h5>
+                    <h5 class="card-title"><i class="bi bi-file-earmark"></i>Tutorial Features</h5>
                     <ul>
                         <li>ASP.NET FileUpload Control Implementation</li>
                         <li>HTML Form-based File Upload</li>
@@ -21,23 +21,43 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">ASP.NET Upload</h5>
+                            <h5 class="card-title"><i class="bi bi-cloud-arrow-up"></i> ASP.NET Upload</h5>
                             <p class="card-text">Uses the built-in ASP.NET FileUpload control with server-side handling.</p>
-                            <a href="AspNetUpload.aspx" class="btn btn-primary">Try ASP.NET Upload</a>
+                            <a href="AspNetUpload.aspx" class="btn btn-primary">
+                                <i class="bi bi-upload"></i>
+                                Try ASP.NET Upload
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">HTML Form Upload</h5>
+                            <h5 class="card-title"><i class="bi bi-folder2-open"></i> HTML Form Upload</h5>
                             <p class="card-text">Uses a standard HTML form with custom handling and processing.</p>
-                            <a href="HtmlFormUpload.aspx" class="btn btn-primary">Try HTML Form Upload</a>
+                            <a href="HtmlFormUpload.aspx" class="btn btn-primary">
+                                <i class="bi bi-folder"></i>
+                                Try HTML Form Upload
+                            </a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-archive"></i> Documentation
+                        </h5>
+                        <p class="card-text">Documentation explaining file uploading</p>
+                        <a href="Documentation.aspx" class="btn btn-primary">
+                            <i class="bi bi-archive"></i> Documentation
+                        </a>
                     </div>
                 </div>
             </div>
