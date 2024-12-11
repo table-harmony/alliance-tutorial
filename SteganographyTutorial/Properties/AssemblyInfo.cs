@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("StegnographyTutorial")]
+[assembly: AssemblyTitle("SteganographyTutorial")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("StegnographyTutorial")]
+[assembly: AssemblyProduct("SteganographyTutorial")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b634caf4-32d9-4ba5-abea-4c3b0daf7123")]
+[assembly: Guid("b9903b62-4a84-4e43-b28e-6cbea7678f52")]
 
 // Version information for an assembly consists of the following four values:
 //

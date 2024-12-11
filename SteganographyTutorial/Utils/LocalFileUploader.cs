@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace FileUploaderTutorial.Utils {
+namespace SteganographyTutorial.Utils {
     /// <summary>
     /// מחלקה המממשת העלאת קבצים לשירות לוקלי
     /// </summary>

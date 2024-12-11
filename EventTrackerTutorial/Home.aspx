@@ -11,7 +11,7 @@
             
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5 class="card-title">Project Features</h5>
+                    <h5 class="card-title">Tutorial Features</h5>
                     <ul>
                         <li>Real-time Event Tracking</li>
                         <li>Event Analytics Dashboard</li>

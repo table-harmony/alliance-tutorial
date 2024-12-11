@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTrackerTutorial", "Eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordEncryptionTutorial", "PasswordEncryptionTutorial\PasswordEncryptionTutorial.csproj", "{67E4B31E-26B8-4834-9B3A-E892D93C9BAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StegnographyTutorial", "StegnographyTutorial\StegnographyTutorial.csproj", "{B634CAF4-32D9-4BA5-ABEA-4C3B0DAF7123}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AITutorial", "AITutorial\AITutorial.csproj", "{21E5E278-CCEC-46C4-AAE8-97640C01DD93}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Mangement Tutorial", "User Mangement Tutorial", "{A95082ED-DC9D-4B7A-9E89-6C41895496D6}"
@@ -20,6 +18,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET Core Tutorial", "ASP.NET Core Tutorial", "{D73AD56F-970A-40C2-AC3A-231542D2A036}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketsTutorial", "WebSocketsTutorial\WebSocketsTutorial.csproj", "{510F8C64-F4F5-4649-AD20-FB5CFC3C8FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteganographyTutorial", "SteganographyTutorial\SteganographyTutorial.csproj", "{B9903B62-4A84-4E43-B28E-6CBEA7678F52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,6 @@ Global
 		{67E4B31E-26B8-4834-9B3A-E892D93C9BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67E4B31E-26B8-4834-9B3A-E892D93C9BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67E4B31E-26B8-4834-9B3A-E892D93C9BAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B634CAF4-32D9-4BA5-ABEA-4C3B0DAF7123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B634CAF4-32D9-4BA5-ABEA-4C3B0DAF7123}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B634CAF4-32D9-4BA5-ABEA-4C3B0DAF7123}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B634CAF4-32D9-4BA5-ABEA-4C3B0DAF7123}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21E5E278-CCEC-46C4-AAE8-97640C01DD93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21E5E278-CCEC-46C4-AAE8-97640C01DD93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21E5E278-CCEC-46C4-AAE8-97640C01DD93}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{510F8C64-F4F5-4649-AD20-FB5CFC3C8FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510F8C64-F4F5-4649-AD20-FB5CFC3C8FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510F8C64-F4F5-4649-AD20-FB5CFC3C8FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9903B62-4A84-4E43-B28E-6CBEA7678F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9903B62-4A84-4E43-B28E-6CBEA7678F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9903B62-4A84-4E43-B28E-6CBEA7678F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9903B62-4A84-4E43-B28E-6CBEA7678F52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
