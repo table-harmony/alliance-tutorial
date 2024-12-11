@@ -186,6 +186,7 @@
     <Compile Include="Utils\LocalFileUploader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

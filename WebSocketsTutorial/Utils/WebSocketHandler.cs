@@ -9,6 +9,19 @@ using System.Web;
 using System.Web.WebSockets;
 
 namespace WebSocketsTutorial.Utils {
+    /// <summary>
+    /// WebSocket handler for real-time communication.
+    /// Manages WebSocket connections and message broadcasting between clients.
+    /// 
+    /// This implementation:
+    /// - Maintains a list of connected clients
+    /// - Handles WebSocket connection requests
+    /// - Manages message broadcasting between clients
+    /// - Implements connection cleanup on disconnect
+    /// 
+    /// Uses ASP.NET's built-in WebSocket implementation:
+    /// https://learn.microsoft.com/en-us/aspnet/web-forms/overview/advanced/websockets
+    /// </summary>
     public class WebSocketHandler : IHttpHandler {
         private readonly static List<WebSocket> _clients = new List<WebSocket>();
         public bool IsReusable => true;
