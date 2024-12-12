@@ -1,6 +1,4 @@
 ﻿using MongoDB.Driver;
-using Microsoft.Extensions.Configuration;
-using DataAccessLayer.Entities.Nimbus;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading.Tasks;
@@ -21,7 +19,7 @@ namespace DataAccessLayer.Repositories.Nimbus.v2 {
             return await collection.Find(_ => true).ToListAsync();
         }
 
-        public async Task<User?> GetAsync(int id) {
+        public async Task<User> GetAsync(int id) {
             return await collection.Find(user => user.Id == id).FirstOrDefaultAsync();
         }
 

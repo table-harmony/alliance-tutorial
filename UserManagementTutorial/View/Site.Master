@@ -17,7 +17,7 @@
 <body class="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="Home.aspx"><i class="bi bi-incognito"></i> User Management</a>
+            <a class="navbar-brand" href="Home.aspx"><i class="bi bi-person"></i> User Management</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
