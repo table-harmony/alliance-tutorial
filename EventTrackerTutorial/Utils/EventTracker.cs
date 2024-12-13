@@ -23,7 +23,7 @@ namespace EventTrackerTutorial.Utils {
     public class EventTracker {
         private readonly HttpClient _httpClient;  //  לקוח HTTP לביצוע בקשות לשרת   
         private const string API_URL = "https://www.devharmony.io/api/";  //  כתובת ה-API של השירות
-        private const string SCHOOL_ID = "your_school_id";  // מזהה בית ספר
+        private const string SCHOOL_ID = "j9714cqqkrf0trcj8vm235vnjs70t8vb";  // מזהה בית ספר
 
         public EventTracker() {
             _httpClient = new HttpClient {

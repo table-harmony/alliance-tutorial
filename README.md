@@ -24,6 +24,22 @@ Implementation of image steganography techniques for hiding and extracting data 
 
 User authentication, authorization, and management system implementation.
 
+### 6. Error Handling Tutorial
+
+Implement custom error handling in ASP.NET Web Forms applications.
+
+### 7. Senders Tutorial
+
+Send messages with email, sms and whatsapp.
+
+### 8. Event Tracker Tutorial
+
+Implement event tracking and analytics in your ASP.NET applications.
+
+### 9. Password Encryption Tutorial
+
+Implement secure password hashing in your ASP.NET applications.
+
 ## Getting Started
 
 1. Clone the repository
