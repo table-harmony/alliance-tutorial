@@ -1,4 +1,4 @@
-# Alliance Tutorial Project
+# Alliance Tutorial
 
 A comprehensive collection of ASP.NET Web Forms tutorials demonstrating various web development concepts and integrations.
 
