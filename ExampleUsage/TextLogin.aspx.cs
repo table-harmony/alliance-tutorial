@@ -1,4 +1,5 @@
 ﻿using ExampleUsage.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,6 +13,8 @@ using System.Web.UI.WebControls;
 
 namespace ExampleUsage {
     public partial class TextLogin : System.Web.UI.Page {
+        protected IFileUploader fileUploader = Global.ServiceProvider.GetService<IFileUploader>();
+
         protected void Page_Load(object sender, EventArgs e) {
 
         }
@@ -27,7 +30,8 @@ namespace ExampleUsage {
                     return;
                 }
 
-                string storedEncryption = await DecodeText(user.Password);
+                string fileUrl = await fileUploader.GetFileUrlAsync(user.Password);
+                string storedEncryption = await DecodeText(fileUrl);
 
                 string fullPassword = PasswordInput.Text + ":" + user.Salt;
                 string writtenEncryption = SHA256Encryption.Encrypt(fullPassword);

@@ -6,6 +6,7 @@ using System.Web;
 using MimeTypes;
 
 namespace ExampleUsage.Utils {
+  
     /// <summary>
     /// מחלקה המממשת העלאת קבצים לשירות לוקלי
     /// </summary>
@@ -28,7 +29,7 @@ namespace ExampleUsage.Utils {
         /// <param name="file">הקובץ להעלאה</param>
         /// <returns>כתובת URL לגישה לקובץ</returns>
         /// <exception cref="InvalidOperationException">כאשר נכשל לעלות קובץ</exception>
-        public async Task<string> UploadFileAsync(File file) {
+        public async Task<FileUploadResponse> UploadFileAsync(File file) {
             try {
                 string fileName = Guid.NewGuid().ToString() + GetExtension(file.ContentType);
                 string filePath = Path.Combine(_uploadDirectory, fileName);
@@ -37,9 +38,22 @@ namespace ExampleUsage.Utils {
                     await file.Stream.CopyToAsync(fileStream);
                 }
 
-                return filePath;
+                FileUploadResponse response = new FileUploadResponse() {
+                    FileUrl = filePath,
+                    StorageId = fileName
+                };
+
+                return response;
             } catch (Exception ex) {
                 throw new InvalidOperationException($"Failed to upload file: {ex.Message}", ex);
+            }
+        }
+
+        public Task<string> GetFileUrlAsync(string storageId) {
+            try {
+                return Task.FromResult(Path.Combine(_uploadDirectory, storageId));
+            } catch (Exception ex) {
+                throw new InvalidOperationException($"Failed to get file: {ex.Message}", ex);
             }
         }
 

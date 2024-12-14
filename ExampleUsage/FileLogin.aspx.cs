@@ -1,4 +1,5 @@
 ﻿using ExampleUsage.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,6 +13,8 @@ using System.Web.UI.WebControls;
 
 namespace ExampleUsage {
     public partial class FileLogin : System.Web.UI.Page {
+        protected IFileUploader fileUploader = Global.ServiceProvider.GetService<IFileUploader>();
+
         protected void Page_Load(object sender, EventArgs e) {
         }
 
@@ -25,8 +28,10 @@ namespace ExampleUsage {
                     StatusLabel.Text = "User not found";
                     return;
                 }
+                
+                string fileUrl = await fileUploader.GetFileUrlAsync(user.Password);
 
-                string storedEncryption = await DecodeText(user.Password);
+                string storedEncryption = await DecodeText(fileUrl);
                 string uploadedEncryption = DecodeText(PasswordInput.FileContent);
 
                 if (storedEncryption != uploadedEncryption) {
