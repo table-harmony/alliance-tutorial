@@ -5,7 +5,6 @@ using System.Text;
 namespace ExampleUsage.Utils {
     /// <summary>
     /// Provides methods for SHA256 hashing and verification
-    /// TODO: Add SALT
     /// </summary>
     public static class SHA256Encryption {
         /// <summary>
@@ -42,6 +41,14 @@ namespace ExampleUsage.Utils {
 
             // Compare the hashes
             return comparer.Compare(hashOfInput, hash) == 0;
+        }
+
+        /// <summary>
+        /// Generates Salt
+        /// </summary>
+        /// <returns>Salt</returns>
+        public static string GenerateSalt() {
+            return Guid.NewGuid().ToString();
         }
     }
 }

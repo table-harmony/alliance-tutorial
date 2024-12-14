@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ExampleUsage.Login" %>
+﻿<%@ Page Async="true" Title="Text Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TextLogin.aspx.cs" Inherits="ExampleUsage.TextLogin" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -19,13 +19,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="PasswordFileInput" class="form-label">Password File</label>
-							<asp:FileUpload ID="PasswordFileInput" runat="server" class="form-control" />
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="PasswordTextInput" class="form-label">Password Text</label>
-                            <asp:TextBox ID="PasswordTextInput" runat="server" CssClass="form-control" TextMode="Password" />
+                            <label for="PasswordInput" class="form-label">Password</label>
+                            <asp:TextBox ID="PasswordInput" runat="server" CssClass="form-control" TextMode="Password" required="true" />
                         </div>
 
                         <div class="mb-4">

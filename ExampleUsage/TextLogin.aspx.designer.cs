@@ -10,7 +10,7 @@
 namespace ExampleUsage {
 
 
-    public partial class Login {
+    public partial class TextLogin {
 
         /// <summary>
         /// form1 control.
@@ -31,22 +31,13 @@ namespace ExampleUsage {
         protected global::System.Web.UI.WebControls.TextBox UserNameInput;
 
         /// <summary>
-        /// PasswordFileInput control.
+        /// PasswordInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload PasswordFileInput;
-
-        /// <summary>
-        /// PasswordTextInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PasswordTextInput;
+        protected global::System.Web.UI.WebControls.TextBox PasswordInput;
 
         /// <summary>
         /// LoginButton control.

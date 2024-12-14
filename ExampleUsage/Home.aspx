@@ -20,18 +20,19 @@
                 </div>
             </div>
 
-                    <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Get Started</h5>
-                <p class="card-text">
-                    Please login or register.
-                </p>
-                <div class="mt-3">
-                    <a href="Login.aspx" class="btn btn-primary me-2">Login</a>
-                    <a href="Register.aspx" class="btn btn-outline-primary">Register</a>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Get Started</h5>
+                    <p class="card-text">
+                        Please login or register.
+                    </p>
+                    <div class="mt-3">
+                        <a href="TextLogin.aspx" class="btn btn-info me-2">Text Login</a>
+                        <a href="FileLogin.aspx" class="btn btn-primary me-2">File Login</a>
+                        <a href="Register.aspx" class="btn btn-outline-primary">Register</a>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </asp:Content>

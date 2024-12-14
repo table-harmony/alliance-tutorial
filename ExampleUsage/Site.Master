@@ -22,10 +22,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="Login.aspx">Login</a>
+                        <a class="nav-link" href="TextLogin.aspx">Text Login</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="FileLogin.aspx">File Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Register.aspx">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin.aspx">Admin</a>
                     </li>
                 </ul>
             </div>

@@ -28,23 +28,26 @@ namespace ExampleUsage {
                 return;
             }
 
-            User user = new User() {
-                Name = UserNameInput.Text,
-            };
-
-            User existingUser = Database.Users
-                .Where(u => u.Name == user.Name)
-                .FirstOrDefault();
-
-            if (existingUser != null) {
-                StatusLabel.Text = "User already exists with name";
-                return;
-            }
-
             try {
-                string encryption = SHA256Encryption.Encrypt(PasswordInput.Text);
-                var imageStream = await EncryptTextToImage(encryption);
+                User user = new User() {
+                    Name = UserNameInput.Text,
+                    Password = PasswordInput.Text,
+                    Salt = SHA256Encryption.GenerateSalt(),
+                };
 
+                User existingUser = Database.Users
+                    .Where(u => u.Name == user.Name)
+                    .FirstOrDefault();
+
+                if (existingUser != null) {
+                    StatusLabel.Text = "User already exists with name";
+                    return;
+                }
+
+                string fullPassword = user.Password + ":" + user.Salt;
+                string encryption = SHA256Encryption.Encrypt(fullPassword);
+
+                var imageStream = await EncryptTextToImage(encryption);
                 var file = new File {
                     Stream = imageStream,
                     ContentType = "image/png"
